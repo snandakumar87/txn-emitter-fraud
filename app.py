@@ -148,7 +148,7 @@ def main(args):
         producer.send(args.topic, json.dumps(generate_event(TXN_TS+TXN_INCREMENT,crdNo,cntr)).encode(), json.dumps(crdNo).encode())
         producer.send(args.histTopic, json.dumps(generate_event(TXN_TS+TXN_INCREMENT,crdNo,cntr)).encode(), json.dumps(crdNo).encode())
         cntr = int(cntr) + 1
-        time.sleep(1.0 / 10)
+        time.sleep(1.0 / 100)
 
 def get_arg(env, default):
     return os.getenv(env) if os.getenv(env, '') is not '' else default
@@ -158,7 +158,7 @@ def parse_args(parser):
     args = parser.parse_args()
     args.brokers = get_arg('KAFKA_BROKERS', args.brokers)
     args.topic = get_arg('KAFKA_TOPIC', args.topic)
-    args.histTopic = get_arg('HIST_TOPIC', args.rate)
+    args.histTopic = get_arg('HIST_TOPIC', args.histtopic)
     args.rate = get_arg('RATE', args.rate)
     return args
 
@@ -176,7 +176,7 @@ if __name__ == '__main__':
         help='Topic to publish to, env variable KAFKA_TOPIC',
         default='event-input-stream')
     parser.add_argument(
-        '--hist-topic',
+        '--histtopic',
         help='Topic to publish to, env variable KAFKA_TOPIC',
         default='hist-input-stream')
     parser.add_argument(
