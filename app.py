@@ -158,8 +158,8 @@ def parse_args(parser):
     args = parser.parse_args()
     args.brokers = get_arg('KAFKA_BROKERS', args.brokers)
     args.topic = get_arg('KAFKA_TOPIC', args.topic)
-    args.rate = get_arg('RATE', args.rate)
     args.histTopic = get_arg('HIST_TOPIC', args.rate)
+    args.rate = get_arg('RATE', args.rate)
     return args
 
 
