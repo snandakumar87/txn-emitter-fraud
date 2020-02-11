@@ -174,11 +174,11 @@ if __name__ == '__main__':
     parser.add_argument(
         '--topic',
         help='Topic to publish to, env variable KAFKA_TOPIC',
-        default='input-stream')
+        default='inp-stream')
     parser.add_argument(
         '--histtopic',
         help='Topic to publish to, env variable KAFKA_TOPIC',
-        default='hist-stream')
+        default='history-stream')
     parser.add_argument(
         '--rate',
         type=int,
